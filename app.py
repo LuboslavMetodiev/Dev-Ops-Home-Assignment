@@ -34,3 +34,7 @@ def health():
         return "<p>Redis is healthy</p>", 200
     except redis.ConnectionError:
         return "<p>Redis connection failed</p>", 500
+
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
