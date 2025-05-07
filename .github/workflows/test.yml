@@ -6,7 +6,7 @@ on:
       - main
 jobs:
   build:
-    runs-on: ubunto-latest
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
     - name: Set up Docker Buildx
@@ -21,7 +21,7 @@ jobs:
         sleep 20
     - name: Test and show logs
       run: |
-        if ! curl --retry 10 --retry-connrefused http://localhost:8000/health; then
+        if ! curl --retry 10 --retry-connrefused http://localhost:8000/; then
           echo "Test failed, showing logs:"
           docker compose logs
           exit 1
