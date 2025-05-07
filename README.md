@@ -13,7 +13,7 @@ On pull request workflow should be executed. It is located in  .github/workflows
 ### Software Requirements:
 - Docker 
 - Docker Compose
-
+### Running the Application
 1. Make sure Docker engine is running
 2. Download and store files localy
 3. Open terminal or Visual studio code
@@ -24,3 +24,8 @@ docker-compose up --build -d
 ```
 Docker containers should be pulled and started
 You can access the sites on (localhost:8000) (localhost:8000/visited) (localhost:8000/health)
+### Stoping the Application
+Run:
+```
+docker-compose down
+```
