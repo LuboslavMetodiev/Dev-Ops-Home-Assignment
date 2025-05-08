@@ -21,11 +21,15 @@ jobs:
         sleep 20
     - name: Test and show logs
       run: |
-        if ! curl --retry 10 --retry-connrefused http://localhost:8000/; then
-          echo "Test failed, showing logs:"
+        response=$(curl --retry 5 --retry-connrefused -s -o /dev/null -w "%{http_code}" http://localhost:8000/health)
+        if [ "$response" -ne 200 ]; then
+          echo "Test failed: Expected HTTP 200 but got $response"
+          echo "Showing logs:"
           docker compose logs
           exit 1
         fi
+        echo "Test passed: /health returned HTTP 200"
+      
     - name: Clean up
       run: |
         docker compose down
